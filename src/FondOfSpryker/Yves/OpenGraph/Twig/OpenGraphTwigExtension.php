@@ -3,13 +3,16 @@
 /**
  * Implementation of the Facebook Open Graph protocol for Spryker
  *
- * @author      Jozsef Geng <jozsef.geng@fondof.de>
+ * @author      Jozsef Geng <gengjozsef86@gmail.com>
  */
 
 namespace FondOfSpryker\Yves\OpenGraph\Twig;
 
-use FondOfSpryker\Yves\GoogleTagManager\Business\Model\DataLayer\VariableBuilder;
-use FondOfSpryker\Yves\GoogleTagManager\Business\Model\DataLayer\VariableBuilderInterface;
+use FondOfSpryker\Yves\OpenGraph\Business\Model\Property;
+use FondOfSpryker\Yves\OpenGraph\Business\Model\PropertyInterface;
+use FondOfSpryker\Yves\OpenGraph\OpenGraphConfig;
+use Generated\Shared\Transfer\OpenGraphPropertiesTransfer;
+use Silex\Application;
 use Spryker\Client\Cart\CartClientInterface;
 use Spryker\Client\Session\SessionClientInterface;
 use Spryker\Shared\Twig\TwigExtension;
@@ -26,18 +29,24 @@ class OpenGraphTwigExtension extends TwigExtension
     protected $isEnabled;
 
     /**
-     * GoogleTagManagerTwigExtension constructor
+     * @var \FondOfSpryker\Yves\OpenGraph\Business\Model\PropertyInterface
+     */
+    protected $property;
+
+    /**
+     * OpenGraphTwigExtension constructor
      *
-     * @param string $containerID
      * @param bool $isEnabled
-     * @param \FondOfSpryker\Yves\GoogleTagManager\Business\Model\DataLayer\VariableBuilderInterface $variableBuilder
-     * @param \Spryker\Client\Cart\CartClientInterface $cartClient
-     * @param \Spryker\Client\Session\SessionClientInterface $sessionClient
+     * @param \FondOfSpryker\Yves\OpenGraph\Business\Model\PropertyInterface $property
+     *
      */
     public function __construct(
-        bool $isEnabled
+        bool $isEnabled,
+        PropertyInterface $property
+
     ) {
         $this->isEnabled = $isEnabled;
+        $this->property = $property;
     }
 
     /**
@@ -71,21 +80,67 @@ class OpenGraphTwigExtension extends TwigExtension
      *
      * @return string
      */
-    public function renderOpenGraph(Twig_Environment $twig): string
+    public function renderOpenGraph(Twig_Environment $twig, $params): string
     {
         if (!$this->isEnabled) {
             return '';
         }
 
-
         return $twig->render($this->getTemplateName(), [
-            'title' => '',
-            'type'  => '',
-            'image' => '',
-            'url'   => '',
-            'description' => '',
-            'site_name' => ''
+            'og' => $this->getOpenGraphProperties($params),
         ]);
+    }
+
+    /**
+     * @param array $params
+     * @return \Generated\Shared\Transfer\OpenGraphPropertiesTransfer
+     */
+    protected function getOpenGraphProperties($params) : OpenGraphPropertiesTransfer
+    {
+        if (array_key_exists('type', $params) && $params['type'] == Property::TYPE_PRODUCT) {
+            $storageProductTransfer = $params['product'];
+            $config = new OpenGraphConfig();
+            $imageSets = $storageProductTransfer->getImageSets();
+            if (array_key_exists($config->getProductImageSet(), $imageSets) !== false) {
+                $params['image'] = $imageSets[$config->getProductImageSet()][0][$config->getProductImageUrlType()];
+            }
+        }
+
+        return $this->property->getProperties(
+            $this->getProperties($params)
+        );
+    }
+
+    /**
+     * @param array $params
+     * @return array
+     */
+    protected function getProperties(array $params) : array
+    {
+        return array(
+            'title' => $this->getProperty('title', $params),
+            'type' => $this->getProperty('type', $params),
+            'url' => $this->getProperty('url', $params),
+            'description' => $this->getProperty('description', $params),
+            'image' => $this->getProperty('image', $params),
+            'site_name' => $this->getProperty('site_name', $params)
+        );
+    }
+
+    /**
+     * @param string $key
+     * @param array $properties
+     * @return string
+     */
+    protected function getProperty($key, $properties) : string
+    {
+        $property = '';
+
+        if (array_key_exists($key, $properties)  && isset($properties[$key])) {
+            $property = $properties[$key];
+        }
+
+        return $property;
     }
 
     /**

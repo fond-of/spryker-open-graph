@@ -19,4 +19,20 @@ class OpenGraphConfig extends AbstractBundleConfig
     {
         return $this->get(OpenGraphConstants::ENABLED);
     }
+
+    /**
+     * @return string
+     */
+    public function getProductImageSet()
+    {
+        return $this->get(OpenGraphConstants::PRODUCT_IMAGE_SET);
+    }
+
+    /**
+     * @return string
+     */
+    public function getProductImageUrlType()
+    {
+        return $this->get(OpenGraphConstants::PRODUCT_IMAGE_URL_TYPE);
+    }
 }
