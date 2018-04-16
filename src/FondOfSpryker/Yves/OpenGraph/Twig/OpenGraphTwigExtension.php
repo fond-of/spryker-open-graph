@@ -12,9 +12,6 @@ use FondOfSpryker\Yves\OpenGraph\Business\Model\Property;
 use FondOfSpryker\Yves\OpenGraph\Business\Model\PropertyInterface;
 use FondOfSpryker\Yves\OpenGraph\OpenGraphConfig;
 use Generated\Shared\Transfer\OpenGraphPropertiesTransfer;
-use Silex\Application;
-use Spryker\Client\Cart\CartClientInterface;
-use Spryker\Client\Session\SessionClientInterface;
 use Spryker\Shared\Twig\TwigExtension;
 use Twig_Environment;
 use Twig_SimpleFunction;
@@ -38,12 +35,10 @@ class OpenGraphTwigExtension extends TwigExtension
      *
      * @param bool $isEnabled
      * @param \FondOfSpryker\Yves\OpenGraph\Business\Model\PropertyInterface $property
-     *
      */
     public function __construct(
         bool $isEnabled,
         PropertyInterface $property
-
     ) {
         $this->isEnabled = $isEnabled;
         $this->property = $property;
@@ -55,7 +50,7 @@ class OpenGraphTwigExtension extends TwigExtension
     public function getFunctions()
     {
         return [
-            $this->createOpenGraphFunction()
+            $this->createOpenGraphFunction(),
         ];
     }
 
@@ -76,11 +71,11 @@ class OpenGraphTwigExtension extends TwigExtension
 
     /**
      * @param \Twig_Environment $twig
-     * @param string $templateName
+     * @param array $params
      *
      * @return string
      */
-    public function renderOpenGraph(Twig_Environment $twig, $params): string
+    public function renderOpenGraph(Twig_Environment $twig, array $params): string
     {
         if (!$this->isEnabled) {
             return '';
@@ -93,9 +88,10 @@ class OpenGraphTwigExtension extends TwigExtension
 
     /**
      * @param array $params
+     *
      * @return \Generated\Shared\Transfer\OpenGraphPropertiesTransfer
      */
-    protected function getOpenGraphProperties($params) : OpenGraphPropertiesTransfer
+    protected function getOpenGraphProperties(array $params): OpenGraphPropertiesTransfer
     {
         if (array_key_exists('type', $params) && $params['type'] == Property::TYPE_PRODUCT) {
             $storageProductTransfer = $params['product'];
@@ -113,30 +109,32 @@ class OpenGraphTwigExtension extends TwigExtension
 
     /**
      * @param array $params
+     *
      * @return array
      */
-    protected function getProperties(array $params) : array
+    protected function getProperties(array $params): array
     {
-        return array(
+        return [
             'title' => $this->getProperty('title', $params),
             'type' => $this->getProperty('type', $params),
             'url' => $this->getProperty('url', $params),
             'description' => $this->getProperty('description', $params),
             'image' => $this->getProperty('image', $params),
-            'site_name' => $this->getProperty('site_name', $params)
-        );
+            'site_name' => $this->getProperty('site_name', $params),
+        ];
     }
 
     /**
      * @param string $key
      * @param array $properties
+     *
      * @return string
      */
-    protected function getProperty($key, $properties) : string
+    protected function getProperty($key, $properties): string
     {
         $property = '';
 
-        if (array_key_exists($key, $properties)  && isset($properties[$key])) {
+        if (array_key_exists($key, $properties) && isset($properties[$key])) {
             $property = $properties[$key];
         }
 

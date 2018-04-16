@@ -8,12 +8,10 @@
 
 namespace FondOfSpryker\Yves\OpenGraph\Business\Model;
 
-use Generated\Shared\Transfer\StorageProductTransfer;
-
 interface PropertyInterface
 {
     /**
-     * @param  array $params
+     * @param array $params
      *
      * @return Generated\Shared\Transfer\OpenGraphPropertiesTransfer OpenGraphPropertiesTransfer
      */

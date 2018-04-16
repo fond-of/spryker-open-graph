@@ -10,7 +10,6 @@ namespace FondOfSpryker\Yves\OpenGraph;
 use FondOfSpryker\Yves\OpenGraph\Business\Model\Property;
 use FondOfSpryker\Yves\OpenGraph\Business\Model\PropertyInterface;
 use FondOfSpryker\Yves\OpenGraph\Twig\OpenGraphTwigExtension;
-use Silex\Application;
 use Spryker\Yves\Kernel\AbstractFactory;
 
 /**
@@ -40,9 +39,8 @@ class OpenGraphFactory extends AbstractFactory
     /**
      * @return \FondOfSpryker\Yves\OpenGraph\Business\Model\Property
      */
-    protected function createPropertyModel() : PropertyInterface
+    protected function createPropertyModel(): PropertyInterface
     {
         return new Property();
     }
-
 }

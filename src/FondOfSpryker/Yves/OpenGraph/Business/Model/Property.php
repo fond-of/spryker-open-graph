@@ -9,20 +9,18 @@
 namespace FondOfSpryker\Yves\OpenGraph\Business\Model;
 
 use Generated\Shared\Transfer\OpenGraphPropertiesTransfer;
-use Generated\Shared\Transfer\StorageProductTransfer;
 
 class Property implements PropertyInterface
 {
     const TYPE_WEBSITE = "website";
     const TYPE_PRODUCT = "product";
 
-
     /**
-     * @param  array $params
+     * @param array $params
      *
      * @return Generated\Shared\Transfer\OpenGraphPropertiesTransfer OpenGraphPropertiesTransfer
      */
-    public function getProperties(array $params) : OpenGraphPropertiesTransfer
+    public function getProperties(array $params): OpenGraphPropertiesTransfer
     {
         $transferObject = new OpenGraphPropertiesTransfer();
 
@@ -35,5 +33,4 @@ class Property implements PropertyInterface
 
         return $transferObject;
     }
-
 }
