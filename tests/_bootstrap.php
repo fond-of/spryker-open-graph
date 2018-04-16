@@ -9,4 +9,3 @@ define('APPLICATION_STORE', 'UNIT');
 
 $stream = \org\bovigo\vfs\vfsStream::setup('root');
 define('APPLICATION_ROOT_DIR', $stream->url());
-git remote add origin https://github.com/fond-of/spryker-open-graph.git
