@@ -49,7 +49,7 @@ $this->application->register(new OpenGraphTwigServiceProvider());
             'site_name': app.locale | slice(0, 2)
         }
         %}
-        {{ fondOfSpykerOpenGraph(params)}}
+        {{ openGraph(params)}}
     {% endblock %}
 ```
 
@@ -64,7 +64,7 @@ $this->application->register(new OpenGraphTwigServiceProvider());
           'site_name': '....'
       }
       %}
-      {{ fondOfSpykerOpenGraph(params)}}
+      {{ openGraph(params)}}
   {% endblock %}
 ```
 
@@ -80,6 +80,6 @@ $this->application->register(new OpenGraphTwigServiceProvider());
           'product': product
       }
       %}
-      {{ fondOfSpykerOpenGraph(params)}}
+      {{ openGraph(params)}}
   {% endblock %}
 ```

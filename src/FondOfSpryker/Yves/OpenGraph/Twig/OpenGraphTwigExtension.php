@@ -18,7 +18,7 @@ use Twig_SimpleFunction;
 
 class OpenGraphTwigExtension extends TwigExtension
 {
-    const FUNCTION_OPEN_GRAPH = 'fondOfSpykerOpenGraph';
+    const FUNCTION_OPEN_GRAPH = 'openGraph';
 
     /**
      * @var bool
