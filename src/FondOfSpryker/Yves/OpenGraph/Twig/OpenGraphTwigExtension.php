@@ -97,6 +97,7 @@ class OpenGraphTwigExtension extends TwigExtension
             $storageProductTransfer = $params['product'];
             $config = new OpenGraphConfig();
             $imageSets = $storageProductTransfer->getImageSets();
+
             if (array_key_exists($config->getProductImageSet(), $imageSets) !== false) {
                 $params['image'] = $imageSets[$config->getProductImageSet()][0][$config->getProductImageUrlType()];
             }
@@ -121,6 +122,7 @@ class OpenGraphTwigExtension extends TwigExtension
             'description' => $this->getProperty('description', $params),
             'image' => $this->getProperty('image', $params),
             'site_name' => $this->getProperty('site_name', $params),
+            'availability' => $this->getProperty('availability', $params),
         ];
     }
 

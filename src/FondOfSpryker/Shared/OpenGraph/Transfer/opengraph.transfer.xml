@@ -10,5 +10,6 @@
         <property name="url" type="string" />
         <property name="description" type="string" />
         <property name="siteName" type="string" />
+        <property name="availability" type="string" />
     </transfer>
 </transfers>
