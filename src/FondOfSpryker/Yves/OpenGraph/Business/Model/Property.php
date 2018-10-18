@@ -30,6 +30,7 @@ class Property implements PropertyInterface
         $transferObject->setDescription($params['description']);
         $transferObject->setImage($params['image']);
         $transferObject->setSiteName($params['site_name']);
+        $transferObject->setAvailability($params['availability']);
 
         return $transferObject;
     }

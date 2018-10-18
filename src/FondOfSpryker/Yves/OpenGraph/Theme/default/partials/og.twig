@@ -1,6 +1,11 @@
-<meta property="og:title"       content="{{ og.title }}"/>
-<meta property="og:type"        content="{{ og.type }}"/>
-<meta property="og:url"         content="{{ og.url }}"/>
-<meta property="og:image"       content="{{ og.image }}"/>
-<meta property="og:description" content="{{ og.description }}"/>
-<meta property="og:site_name"   content="{{ og.siteName }}"/>
+<meta property="og:title"           content="{{ og.title }}"/>
+<meta property="og:type"            content="{{ og.type }}"/>
+<meta property="og:url"             content="{{ og.url }}"/>
+<meta property="og:image"           content="{{ og.image }}"/>
+<meta property="og:description"     content="{{ og.description }}"/>
+<meta property="og:site_name"       content="{{ og.siteName }}"/>
+{% if og.availability %}
+    {% spaceless %}
+        <meta property="og:availability"    content="{{ og.availability }}"/>
+    {% endspaceless %}
+{% endif %}
