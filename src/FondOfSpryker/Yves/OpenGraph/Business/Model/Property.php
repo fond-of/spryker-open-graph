@@ -31,7 +31,7 @@ class Property implements PropertyInterface
 
         $transferObject->setTitle($params['title']);
         $transferObject->setType($params['type']);
-        $transferObject->setUrl($this->getHost());
+        $transferObject->setUrl($params['url']);
         $transferObject->setDescription($params['description']);
         $transferObject->setImage($params['image']);
         $transferObject->setSiteName($params['site_name']);
