@@ -13,7 +13,7 @@ interface PropertyInterface
     /**
      * @param array $params
      *
-     * @return Generated\Shared\Transfer\OpenGraphPropertiesTransfer OpenGraphPropertiesTransfer
+     * @return \Generated\Shared\Transfer\OpenGraphPropertiesTransfer OpenGraphPropertiesTransfer
      */
     public function getProperties(array $params);
 }
