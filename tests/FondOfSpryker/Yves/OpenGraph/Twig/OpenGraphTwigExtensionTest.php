@@ -4,7 +4,7 @@ namespace FondOfSpryker\Yves\OpenGraph\Twig;
 
 use Codeception\Test\Unit;
 use FondOfSpryker\Yves\OpenGraph\Business\Model\PropertyInterface;
-use Twig_Environment;
+use Twig\Environment;
 
 class OpenGraphTwigExtensionTest extends Unit
 {
@@ -24,7 +24,7 @@ class OpenGraphTwigExtensionTest extends Unit
     protected $propertyMock;
 
     /**
-     * @var \Twig_Environment
+     * @var Twig\Environment
      */
     protected $twigEnvironmentMock;
 
@@ -43,7 +43,7 @@ class OpenGraphTwigExtensionTest extends Unit
             ->setMethods(['getProperties'])
             ->getMock();
 
-        $this->twigEnvironmentMock = $this->getMockBuilder(Twig_Environment::class)
+        $this->twigEnvironmentMock = $this->getMockBuilder(Environment::class)
             ->disableOriginalConstructor()
             ->setMethods(['render'])
             ->getMock();

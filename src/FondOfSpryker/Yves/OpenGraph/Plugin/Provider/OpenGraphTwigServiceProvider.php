@@ -11,7 +11,7 @@ namespace FondOfSpryker\Yves\OpenGraph\Plugin\Provider;
 use Silex\Application;
 use Silex\ServiceProviderInterface;
 use Spryker\Yves\Kernel\AbstractPlugin;
-use Twig_Environment;
+use Twig\Environment;
 
 /**
  * @method \FondOfSpryker\Yves\OpenGraph\OpenGraphFactory getFactory()
@@ -32,7 +32,7 @@ class OpenGraphTwigServiceProvider extends AbstractPlugin implements ServiceProv
         $app['twig'] = $app->share(
             $app->extend(
                 'twig',
-                function (Twig_Environment $twig) use ($twigExtension) {
+                function (Environment $twig) use ($twigExtension) {
                     $twig->addExtension($twigExtension);
 
                     return $twig;

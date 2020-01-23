@@ -13,8 +13,7 @@ use FondOfSpryker\Yves\OpenGraph\Business\Model\PropertyInterface;
 use FondOfSpryker\Yves\OpenGraph\OpenGraphConfig;
 use Generated\Shared\Transfer\OpenGraphPropertiesTransfer;
 use Spryker\Shared\Twig\TwigExtension;
-use Twig_Environment;
-use Twig_SimpleFunction;
+use Twig\Environment;
 
 class OpenGraphTwigExtension extends TwigExtension
 {
@@ -59,7 +58,7 @@ class OpenGraphTwigExtension extends TwigExtension
      */
     protected function createOpenGraphFunction()
     {
-        return new Twig_SimpleFunction(
+        return new \Twig_SimpleFunction(
             static::FUNCTION_OPEN_GRAPH,
             [$this, 'renderOpenGraph'],
             [
@@ -70,12 +69,12 @@ class OpenGraphTwigExtension extends TwigExtension
     }
 
     /**
-     * @param \Twig_Environment $twig
+     * @param Twig\Environment $twig
      * @param array $params
      *
      * @return string
      */
-    public function renderOpenGraph(Twig_Environment $twig, array $params): string
+    public function renderOpenGraph(Environment $twig, array $params): string
     {
         if (!$this->isEnabled) {
             return '';
