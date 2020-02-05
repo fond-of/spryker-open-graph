@@ -1,11 +1,5 @@
 <?php
 
-/**
- * Implementation of the Facebook Open Graph protocol for Spryker
- *
- * @author      Jozsef Geng <gengjozsef86@gmail.com>
- */
-
 namespace FondOfSpryker\Yves\OpenGraph\Twig;
 
 use FondOfSpryker\Yves\OpenGraph\Business\Model\Property;
@@ -14,10 +8,11 @@ use FondOfSpryker\Yves\OpenGraph\OpenGraphConfig;
 use Generated\Shared\Transfer\OpenGraphPropertiesTransfer;
 use Spryker\Shared\Twig\TwigExtension;
 use Twig\Environment;
+use Twig_SimpleFunction;
 
 class OpenGraphTwigExtension extends TwigExtension
 {
-    const FUNCTION_OPEN_GRAPH = 'openGraph';
+    public const FUNCTION_OPEN_GRAPH = 'openGraph';
 
     /**
      * @var bool
@@ -58,7 +53,7 @@ class OpenGraphTwigExtension extends TwigExtension
      */
     protected function createOpenGraphFunction()
     {
-        return new \Twig_SimpleFunction(
+        return new Twig_SimpleFunction(
             static::FUNCTION_OPEN_GRAPH,
             [$this, 'renderOpenGraph'],
             [

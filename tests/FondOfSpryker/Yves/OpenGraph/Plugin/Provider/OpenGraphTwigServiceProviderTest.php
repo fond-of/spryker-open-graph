@@ -3,7 +3,6 @@
 namespace FondOfSpryker\Yves\OpenGraph;
 
 use Codeception\Test\Unit;
-use FondOfSpryker\Yves\OpenGraph\Plugin\Provider\OpenGraphTwigServiceProvider;
 use Silex\Application;
 
 class OpenGraphTwigServiceProviderTest extends Unit
@@ -14,7 +13,7 @@ class OpenGraphTwigServiceProviderTest extends Unit
     protected $applicationMock;
 
     /**
-     * @var null|\Spryker\Yves\Kernel\Container|\PHPUnit\Framework\MockObject\MockObject
+     * @var \Spryker\Yves\Kernel\Container|\PHPUnit\Framework\MockObject\MockObject|null
      */
     protected $containerMock;
 

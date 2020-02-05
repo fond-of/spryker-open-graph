@@ -1,21 +1,22 @@
 <?php
+
 namespace Generated\Shared\Transfer;
 
 use Spryker\Shared\Kernel\Transfer\AbstractTransfer;
 
 class OpenGraphPropertiesTransfer extends AbstractTransfer
 {
-    const TITLE = 'title';
+    public const TITLE = 'title';
 
-    const TYPE = 'type';
+    public const TYPE = 'type';
 
-    const IMAGE = 'image';
+    public const IMAGE = 'image';
 
-    const URL = 'url';
+    public const URL = 'url';
 
-    const DESCRIPTION = 'description';
+    public const DESCRIPTION = 'description';
 
-    const SITE_NAME = 'siteName';
+    public const SITE_NAME = 'siteName';
 
     /**
      * @var string

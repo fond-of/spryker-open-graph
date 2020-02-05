@@ -33,7 +33,6 @@ class OpenGraphTwigExtensionTest extends Unit
      */
     public function _before()
     {
-
         $this->openGraphTransferMock = $this->getMockBuilder("\Generated\Shared\Transfer\OpenGraphPropertiesTransfer")
             ->disableOriginalConstructor()
             ->getMock();
@@ -85,4 +84,3 @@ class OpenGraphTwigExtensionTest extends Unit
         $this->assertNotEmpty($renderer);
     }
 }
-

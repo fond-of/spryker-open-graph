@@ -1,11 +1,5 @@
 <?php
 
-
-/**
- * Implementation of the Facebook Open Graph protocol for Spryker
- *
- * @author      Jozsef Geng <jozsef.geng@fondof.de>
- */
 namespace FondOfSpryker\Yves\OpenGraph\Plugin\Provider;
 
 use Silex\Application;

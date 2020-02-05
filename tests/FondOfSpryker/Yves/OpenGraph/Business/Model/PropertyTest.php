@@ -3,14 +3,13 @@
 namespace FondOfSpryker\Yves\OpenGraph\Business\Model;
 
 use Codeception\Test\Unit;
-use FondOfSpryker\Yves\OpenGraph\Business\Model\Property;
 use Generated\Shared\Transfer\OpenGraphPropertiesTransfer;
 
 class PropertyTest extends Unit
 {
     /**
-    * @var \Generated\Shared\Transfer\OpenGraphPropertiesTransfer
-    */
+     * @var \Generated\Shared\Transfer\OpenGraphPropertiesTransfer
+     */
     protected $openGraphTransferMock;
 
     /**
@@ -31,21 +30,19 @@ class PropertyTest extends Unit
      */
     public function testGetProperties()
     {
-
-        $params = array(
+        $params = [
             'title' => 'spryker',
-            'type'  => 'website',
-            'url'   => '',
+            'type' => 'website',
+            'url' => '',
             'description' => 'description',
             'image' => '',
-            'site_name' => ''
-        );
+            'site_name' => '',
+        ];
 
-        $property= $this->propertyModel->getProperties($params);
+        $property = $this->propertyModel->getProperties($params);
 
         $this->assertInstanceOf(OpenGraphPropertiesTransfer::class, $property);
         $this->assertEquals('spryker', $property->getTitle());
         $this->assertEquals('website', $property->getType());
     }
-
 }

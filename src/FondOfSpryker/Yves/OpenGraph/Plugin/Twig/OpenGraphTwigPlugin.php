@@ -1,10 +1,5 @@
 <?php
 
-/**
- * Copyright © 2016-present Spryker Systems GmbH. All rights reserved.
- * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
- */
-
 namespace FondOfSpryker\Yves\OpenGraph\Plugin\Twig;
 
 use Spryker\Service\Container\ContainerInterface;
@@ -21,14 +16,14 @@ class OpenGraphTwigPlugin extends AbstractPlugin implements TwigPluginInterface
     protected const TWIG_FUNCTION_OPEN_GRAPH = 'openGraph';
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
+     *
+     * @api
      *
      * @param \Twig\Environment $twig
      * @param \Spryker\Service\Container\ContainerInterface $container
      *
      * @return \Twig\Environment
-     * @api
-     *
      */
     public function extend(Environment $twig, ContainerInterface $container): Environment
     {

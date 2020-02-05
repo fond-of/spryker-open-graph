@@ -1,24 +1,18 @@
 <?php
 
-/**
- * Implementation of the Facebook Open Graph protocol for Spryker
- *
- * @author      Jozsef Geng <gengjozsef86@gmail.com>
- */
-
 namespace FondOfSpryker\Yves\OpenGraph\Business\Model;
 
 use Generated\Shared\Transfer\OpenGraphPropertiesTransfer;
 
 class Property implements PropertyInterface
 {
-    const TYPE_WEBSITE = "website";
-    const TYPE_PRODUCT = "product";
+    public const TYPE_WEBSITE = "website";
+    public const TYPE_PRODUCT = "product";
 
-    const SERVER_HTTPS = 'HTTPS';
-    const SERVER_PORT = 'SERVER_PORT';
-    const SERVER_HTTP_HOST = 'HTTP_HOST';
-    const SERVER_REQUEST_URI = 'REQUEST_URI';
+    public const SERVER_HTTPS = 'HTTPS';
+    public const SERVER_PORT = 'SERVER_PORT';
+    public const SERVER_HTTP_HOST = 'HTTP_HOST';
+    public const SERVER_REQUEST_URI = 'REQUEST_URI';
 
     /**
      * @param array $params

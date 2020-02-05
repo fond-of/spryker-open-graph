@@ -8,7 +8,6 @@ use FondOFSpryker\Yves\OpenGraph\Twig\OpenGraphTwigExtension;
 
 class OpenGraphFactoryTest extends Unit
 {
-
     /**
      * @var \FondOfSpryker\Yves\OpenGraph\OpenGraphConfig |\PHPUnit\Framework\MockObject\MockObject
      */
@@ -42,7 +41,6 @@ class OpenGraphFactoryTest extends Unit
         $this->configMock->expects($this->atLeastOnce())
             ->method('isEnabled')
             ->willReturn(true);
-
 
         $openGraphFactory = new OpenGraphFactory();
         $openGraphFactory->setConfig($this->configMock);
