@@ -5,7 +5,7 @@
 <meta property="og:description"     content="{{ og.description }}"/>
 <meta property="og:site_name"       content="{{ og.siteName }}"/>
 {% if og.availability %}
-    {% spaceless %}
+    {% apply spaceless %}
         <meta property="og:availability"    content="{{ og.availability }}"/>
-    {% endspaceless %}
+    {% endapply %}
 {% endif %}
